@@ -14,6 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; a utility function to help in installing emacs packages
 (defun install-packs (packs)
   (dolist (p packs)
     (when (not (package-installed-p p))
