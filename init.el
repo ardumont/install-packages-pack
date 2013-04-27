@@ -9,13 +9,14 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(package-initialize)
 
 ;; a utility function to help in installing emacs packages
 (defun install-packs (packs)
-  (dolist (p packs)
-    (when (not (package-installed-p p))
-      (package-install p))))
+  (progn
+    (when (not package-archive-contents)
+      (package-refresh-contents))
+    (dolist (p packs)
+      (when (not (package-installed-p p))
+        (package-install p)))))
