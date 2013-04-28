@@ -9,5 +9,5 @@ This packages also installs a `install-packs` function to help in installing ema
 
 In your `.emacs-live.el` add this snippet:
 ```elisp
-(live-add-packs '(install-packages-pack))
+(live-add-packs '("/path/to/install-packages-pack"))
 ```
