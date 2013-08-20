@@ -10,6 +10,9 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+;; when wanting to install from only elpa or marmalade
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")  ("marmalade" . "http://marmalade-repo.org/packages/")))
+
 (package-initialize)
 
 ;; a utility function to help in installing emacs packages
