@@ -15,10 +15,12 @@
 
 (package-initialize)
 
-;; a utility function to help in installing emacs packages
+(defun install-pack (p)
+  "A utility function to help in installing emacs package."
+  (unless (package-installed-p p) (package-install p)))
+
 (defun install-packs (packs)
+  "A utility function to help in installing emacs packages."
   (unless package-archive-contents
           (package-refresh-contents))
-  (dolist (p packs)
-    (unless (package-installed-p p)
-            (package-install p))))
+  (dolist (p packs) (install-pack p)))
