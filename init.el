@@ -17,9 +17,8 @@
 
 ;; a utility function to help in installing emacs packages
 (defun install-packs (packs)
-  (progn
-    (when (not package-archive-contents)
-      (package-refresh-contents))
-    (dolist (p packs)
-      (when (not (package-installed-p p))
-        (package-install p)))))
+  (unless package-archive-contents
+          (package-refresh-contents))
+  (dolist (p packs)
+    (unless (package-installed-p p)
+            (package-install p))))
