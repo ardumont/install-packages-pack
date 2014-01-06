@@ -1,11 +1,12 @@
 (require 'package)
 
-;; inactivate any proxy (got some trouble with authentication)
+;; deactivate any proxy (got some trouble with authentication)
 (setq url-proxy-services '(("no_proxy" . "work\\.com")))
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+;; marmalade as default (not melpa as some deps are unstable)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; (add-to-list 'package-archives
