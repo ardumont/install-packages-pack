@@ -13,10 +13,14 @@
 ;; when wanting to install from only elpa or marmalade
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(defun install-pack (p) "A utility function to help in installing emacs package."
-  (unless (package-installed-p p) (package-install p)))
+(defun install-pack (pack &optional init) "A utility function to help in installing emacs package."
+  (unless (package-installed-p pack)
+          (when init
+                (package-refresh-contents)
+                (package-initialize))
+          (package-install pack)))
 
-(install-pack 'dash)
+(install-pack 'dash 'do-initialize-package-system)
 
 (require 'dash)
 
