@@ -3,16 +3,12 @@
 ;; deactivate any proxy (got some trouble with authentication)
 (setq url-proxy-services '(("no_proxy" . "work\\.com")))
 
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(when (< emacs-major-version 24) (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; marmalade as default (not melpa as some deps are unstable)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; when wanting to install from only elpa or marmalade
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")  ("marmalade" . "http://marmalade-repo.org/packages/")))
