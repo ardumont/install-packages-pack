@@ -7,7 +7,7 @@
 (require 'package)
 
 ;; deactivate any proxy (got some trouble with authentication)
-(setq url-proxy-services '(("no_proxy" . "work\\.com")))
+(defvar url-proxy-services '(("no_proxy" . "work\\.com")))
 
 (when (< emacs-major-version 24) (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
