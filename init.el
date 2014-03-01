@@ -1,3 +1,9 @@
+;;; install-packages-pack.el --- Install routine
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'package)
 
 ;; deactivate any proxy (got some trouble with authentication)
@@ -43,3 +49,5 @@
                (unless package-archive-contents (package-refresh-contents))
                (dolist (p new-packs) (install-pack p))
                (when install-temporary-packages-p (install-packages-pack/--reset-temporary-package-archives)))))
+
+;;; install-packages-pack.el ends here
