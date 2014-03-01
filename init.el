@@ -9,10 +9,10 @@
 ;; deactivate any proxy (got some trouble with authentication)
 (defvar url-proxy-services '(("no_proxy" . "work\\.com")))
 
-(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+(setq package-archives '(;; ("org"       . "http://orgmode.org/elpa/")
                          ("gnu"       . "http://elpa.gnu.org/packages/")
                          ("melpa"     . "http://melpa.milkbox.net/packages/")
-;;                         ("tromey"    . "http://tromey.com/elpa/")
+                         ;; ("tromey"    . "http://tromey.com/elpa/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
