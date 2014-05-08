@@ -8,15 +8,16 @@
 (require 'dash)
 
 ;; deactivate any proxy (got some trouble with authentication)
-(defvar url-proxy-services '(("no_proxy" . "work\\.com")))
+(defvar url-proxy-services '(("no_proxy" . "work\\.com")) H)
 
-(defun --filter-repositories (repos archives) "Given a list of couple repository name, repository url, return the list of not associated entries."
+(defun install-packages-pack/--filter-repositories (repos archives)
+  "Given a list REPOS of couple (repository name, repository url) and a list of ARCHIVES, return the list of not associated entries."
   (--filter (not (assoc-default (car it) archives)) repos))
 
 (defun update-repositories-archives! (repos)
+  "Given a list of repositories REPOS, update the package-archives if only new repositories are present."
   (package-initialize)
-  "Given a list of repositories, update the package-archives if only new repositories are present"
-  (-when-let (repos-to-add (--filter-repositories repos package-archives))
+  (-when-let (repos-to-add (install-packages-pack/--filter-repositories repos package-archives))
     (message "Repos to add: %s" repos-to-add)
     ;; we need to add the list of repos to the archives
     (--map (add-to-list 'package-archives it) repos-to-add)
@@ -30,14 +31,16 @@
                                  ;; ("tromey"    . "http://tromey.com/elpa/")
                                  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(defun install-pack (pack) "A utility function to help in installing emacs package."
+(defun install-pack (pack)
+  "A utility function to help in installing an Emacs package PACK."
   (unless (package-installed-p pack)
           (package-install pack)))
 
 (defun install-packs (packs)
-  "A utility function to help installing emacs packages."
+  "A utility function to help installing a list PACKS of Emacs packages."
   (->> packs
        (--filter (not (package-installed-p it)))
        (mapc 'install-pack)))
 
+(provide 'install-packages-pack)
 ;;; install-packages-pack.el ends here
