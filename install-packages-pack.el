@@ -1,7 +1,19 @@
 ;;; install-packages-pack.el --- Install routine
-
+;;
+;; Copyright 2014 Antoine R. Dumont
+;;
+;; Author: Antoine R. Dumont <eniotna.t AT gmail.com>
+;; URL: https://github.com/ardumont/install-packages-pack
+;; Version: 0.0.1
+;;
 ;;; Commentary:
-
+;; Installation:
+;;
+;; (progn
+;;   (switch-to-buffer
+;;    (url-retrieve-synchronously
+;;     "https://raw.githubusercontent.com/ardumont/install-packages-pack/master/install-packages-pack.el"))
+;;   (package-install-from-buffer  (package-buffer-info) 'single))
 ;;; Code:
 
 (require 'package)
