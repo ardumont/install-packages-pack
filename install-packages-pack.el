@@ -8,7 +8,7 @@
 (require 'dash)
 
 ;; deactivate any proxy (got some trouble with authentication)
-(defvar url-proxy-services '(("no_proxy" . "work\\.com")) H)
+(defvar url-proxy-services '(("no_proxy" . "work\\.com")))
 
 (defun install-packages-pack/--filter-repositories (repos archives)
   "Given a list REPOS of couple (repository name, repository url) and a list of ARCHIVES, return the list of not associated entries."
@@ -20,7 +20,7 @@
   (-when-let (repos-to-add (install-packages-pack/--filter-repositories repos package-archives))
     (message "Repos to add: %s" repos-to-add)
     ;; we need to add the list of repos to the archives
-    (--map (add-to-list 'package-archives it) repos-to-add)
+    (mapc (lambda (repo) (add-to-list 'package-archives repo)) repos-to-add)
     (message "new archive: %s" package-archives)
     ;; we need to refresh the packages index
     (package-refresh-contents)))
