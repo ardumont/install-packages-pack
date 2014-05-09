@@ -13,7 +13,7 @@
 ;;   (switch-to-buffer
 ;;    (url-retrieve-synchronously
 ;;     "https://raw.githubusercontent.com/ardumont/install-packages-pack/master/install-packages-pack.el"))
-;;   (package-install-from-buffer  (package-buffer-info) 'single))
+;;   (package-install-from-buffer))
 ;;; Code:
 
 (require 'package)
