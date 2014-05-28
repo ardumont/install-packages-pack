@@ -22,9 +22,6 @@
 (require 'package)
 (require 'dash)
 
-;; deactivate any proxy (got some trouble with authentication)
-(defvar url-proxy-services '(("no_proxy" . "work\\.com")))
-
 (defun install-packages-pack/--filter-repositories (repos archives)
   "Given a list REPOS of couple (repository name, repository url) and a list of ARCHIVES, return the list of not associated entries."
   (--filter (not (assoc-default (car it) archives)) repos))
