@@ -7,6 +7,8 @@
 ;; Version: 0.0.1
 ;; Package-Requires: ((dash "2.5.0"))
 ;;
+;; This file is not part of GNU Emacs.
+;;
 ;;; Commentary:
 ;; Installation:
 ;;
