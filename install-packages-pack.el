@@ -5,7 +5,7 @@
 ;; Author: Antoine R. Dumont <eniotna.t AT gmail.com>
 ;; URL: https://github.com/ardumont/install-packages-pack
 ;; Version: 0.0.1
-;; Package-Requires: ((dash "2.5.0"))
+;; Package-Requires: ((dash "2.6.0"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
