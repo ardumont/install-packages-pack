@@ -42,7 +42,8 @@
                                  ("melpa"     . "http://melpa.milkbox.net/packages/")
                                  ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
                                  ;; ("tromey"    . "http://tromey.com/elpa/")
-                                 ("marmalade" . "http://marmalade-repo.org/packages/")))
+                                 ;; ("marmalade" . "http://marmalade-repo.org/packages/")
+                                 ))
 
 (defun install-pack (pack)
   "A utility function to help in installing an Emacs package PACK."
