@@ -32,12 +32,12 @@
   (-when-let (repos-to-add (install-packages-pack/--filter-repositories repos package-archives))
     (message "Repos to add: %s" repos-to-add)
     ;; we need to add the list of repos to the archives
-    (mapc (lambda (repo) (add-to-list 'package-archives repo)) repos-to-add)
+    (mapc (lambda (repo) (add-to-list 'package-archives repo 'append)) repos-to-add)
     (message "new archive: %s" package-archives)
     ;; we need to refresh the packages index
     (package-refresh-contents)))
 
-(update-repositories-archives! '(;; ("org"      . "http://orgmode.org/elpa/")
+(update-repositories-archives! '(("org"      . "http://orgmode.org/elpa/")
                                  ;; ("gnu"       . "http://elpa.gnu.org/packages/")
                                  ("melpa"     . "http://melpa.milkbox.net/packages/")
                                  ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
