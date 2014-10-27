@@ -20,6 +20,14 @@
 ;;; Code:
 
 (require 'package)
+(mapc 'package-install '(paradox dash names))
+
+(require 'paradox)
+(defvar install-packages-pack/paradox-setup-file (expand-file-name "~/.emacs.d/paradox/setup.el"))
+
+(when (file-exists-p (expand-file-name install-packages-pack/paradox-setup-file))
+  (load-file install-packages-pack/paradox-setup-file))
+
 (require 'dash)
 
 (defun install-packages-pack/--filter-repositories (repos archives)
