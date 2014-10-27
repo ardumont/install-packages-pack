@@ -40,22 +40,13 @@
 
 (defun update-repositories-archives! (repos)
   "Given a list of repositories REPOS, update the package-archives if only new repositories are present."
-  (package-initialize)
   (-when-let (repos-to-add (--filter-repositories repos package-archives))
     (message "Repos to add: %s" repos-to-add)
     ;; we need to add the list of repos to the archives
     (mapc (lambda (repo) (add-to-list 'package-archives repo 'append)) repos-to-add)
     (message "new archive: %s" package-archives)
-    ;; we need to refresh the packages index
-    (package-refresh-contents)))
-
-(update-repositories-archives! '(("org"      . "http://orgmode.org/elpa/")
-                                 ;; ("gnu"       . "http://elpa.gnu.org/packages/")
-                                 ("melpa"     . "http://melpa.milkbox.net/packages/")
-                                 ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                                 ;; ("tromey"    . "http://tromey.com/elpa/")
-                                 ("marmalade" . "http://marmalade-repo.org/packages/")
-                                 ))
+    (package-initialize)
+    (package-refresh-contents)))    ;; we need to refresh the packages index
 
 (defun install-pack (pack)
   "A utility function to help in installing an Emacs package PACK."
@@ -67,8 +58,18 @@
   "A utility function to help installing a list PACKS of Emacs packages."
   (->> packs
     (--filter (not (package-installed-p it)))
-    (mapc 'install-pack)))
+    (mapc #'install-packages-pack/install-pack)))
 )
+
+(install-packages-pack/update-repositories-archives! '(("org"      . "http://orgmode.org/elpa/")
+                                                       ;; ("gnu"       . "http://elpa.gnu.org/packages/")
+                                                       ("melpa"     . "http://melpa.milkbox.net/packages/")
+                                                       ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+                                                       ;; ("tromey"    . "http://tromey.com/elpa/")
+                                                       ("marmalade" . "http://marmalade-repo.org/packages/")
+                                                       ))
+
+
 
 (provide 'install-packages-pack)
 ;;; install-packages-pack.el ends here
