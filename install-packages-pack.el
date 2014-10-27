@@ -23,7 +23,7 @@
 (mapc 'package-install '(paradox dash names))
 
 (require 'paradox)
-(defvar install-packages-pack/paradox-setup-file (expand-file-name "~/.emacs.d/paradox/setup.el"))
+(defvar install-packages-pack/paradox-setup-file (expand-file-name "~/.emacs.d/.paradox/setup.el")) ;; token installed manually the first time M-x paradox-list-packages is called
 
 (when (file-exists-p (expand-file-name install-packages-pack/paradox-setup-file))
   (load-file install-packages-pack/paradox-setup-file))
