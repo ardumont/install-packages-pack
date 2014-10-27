@@ -3,7 +3,7 @@ install-packages-pack
 
 A simple packages to setup emacs repositories (elpa, marmalade and milkbox).
 
-This packages also installs a `install-packs` function to help in installing emacs packages.
+This packages also installs a `install-packages-pack/install-packs` function to help in installing emacs packages.
 
 # Install
 
