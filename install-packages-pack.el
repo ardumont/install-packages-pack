@@ -48,13 +48,13 @@
 (defun install-pack (pack)
   "A utility function to help in installing an Emacs package PACK."
   (unless (package-installed-p pack)
-          (package-install pack)))
+    (package-install pack)))
 
 (defun install-packs (packs)
   "A utility function to help installing a list PACKS of Emacs packages."
   (->> packs
-       (--filter (not (package-installed-p it)))
-       (mapc 'install-pack)))
+    (--filter (not (package-installed-p it)))
+    (mapc 'install-pack)))
 
 (provide 'install-packages-pack)
 ;;; install-packages-pack.el ends here
