@@ -66,7 +66,7 @@
                                                        ("melpa"     . "http://melpa.milkbox.net/packages/")
                                                        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
                                                        ;; ("tromey"    . "http://tromey.com/elpa/")
-                                                       ("marmalade" . "http://marmalade-repo.org/packages/")
+                                                       ("marmalade" . "https://marmalade-repo.org/packages/")
                                                        ))
 
 
