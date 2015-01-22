@@ -20,17 +20,12 @@
 ;;; Code:
 
 (require 'package)
-(mapc 'package-install '(paradox dash names))
+(mapc 'package-install '(dash names))
 
 (require 'names) ;; to add namespaces abilities to emacs-lisp
 
 (define-namespace install-packages-pack/
 
-(require 'paradox)
-(defvar paradox-setup-file (expand-file-name "~/.emacs.d/.paradox/setup.el")) ;; token installed manually the first time M-x paradox-list-packages is called
-
-(when (file-exists-p (expand-file-name paradox-setup-file))
-  (load-file paradox-setup-file))
 
 (require 'dash)
 
