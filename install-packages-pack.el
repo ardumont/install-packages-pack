@@ -20,22 +20,22 @@
 ;;; Code:
 
 (require 'package)
-(mapc 'package-install '(dash names))
 
-(require 'names) ;; to add namespaces abilities to emacs-lisp
-
-(define-namespace install-packages-pack/
-
+(unless package--initialized ;; the first time we hit this (typically in emacs-live)
+  (package-initialize)
+  (add-to-list package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+  (package-refresh-contents)
+  (package-install 'dash))
 
 (require 'dash)
 
-(defun --filter-repositories (repos archives)
+(defun install-packages-pack/--filter-repositories (repos archives)
   "Given a list REPOS of couple (repository name, repository url) and a list of ARCHIVES, return the list of not associated entries."
   (--filter (not (assoc-default (car it) archives)) repos))
 
-(defun update-repositories-archives! (repos)
+(defun install-packages-pack/update-repositories-archives! (repos)
   "Given a list of repositories REPOS, update the package-archives if only new repositories are present."
-  (-when-let (repos-to-add (--filter-repositories repos package-archives))
+  (-when-let (repos-to-add (install-packages-pack/--filter-repositories repos package-archives))
     (message "Repos to add: %s" repos-to-add)
     ;; we need to add the list of repos to the archives
     (mapc (lambda (repo) (add-to-list 'package-archives repo 'append)) repos-to-add)
@@ -43,18 +43,17 @@
     (package-initialize)
     (package-refresh-contents)))    ;; we need to refresh the packages index
 
-(defun install-pack (pack)
+(defun install-packages-pack/install-pack (pack)
   "A utility function to help in installing an Emacs package PACK."
   (unless (package-installed-p pack)
     (package-install pack)))
 
-:autoload
-(defun install-packs (packs)
+;;;###autoload
+(defun install-packages-pack/install-packs (packs)
   "A utility function to help installing a list PACKS of Emacs packages."
   (->> packs
     (--filter (not (package-installed-p it)))
     (mapc #'install-packages-pack/install-pack)))
-)
 
 (install-packages-pack/update-repositories-archives! '(("org"      . "http://orgmode.org/elpa/")
                                                        ;; ("gnu"       . "http://elpa.gnu.org/packages/")
@@ -63,8 +62,6 @@
                                                        ;; ("tromey"    . "http://tromey.com/elpa/")
                                                        ("marmalade" . "https://marmalade-repo.org/packages/")
                                                        ))
-
-
 
 (provide 'install-packages-pack)
 ;;; install-packages-pack.el ends here
