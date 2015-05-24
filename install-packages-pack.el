@@ -23,7 +23,7 @@
 
 (unless package--initialized ;; the first time we hit this (typically in emacs-live)
   (package-initialize)
-  (add-to-list package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
   (package-refresh-contents)
   (package-install 'dash))
 
