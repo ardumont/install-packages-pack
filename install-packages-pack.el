@@ -23,11 +23,11 @@
 
 (mapc (lambda (repo) (add-to-list 'package-archives repo))
       '(("org"      . "http://orgmode.org/elpa/")
-	;; ("gnu"       . "http://elpa.gnu.org/packages/")
-	("melpa"     . "http://melpa.milkbox.net/packages/")
-	;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-	;; ("tromey"    . "http://tromey.com/elpa/")
-	("marmalade" . "https://marmalade-repo.org/packages/")))
+        ;; ("gnu"       . "http://elpa.gnu.org/packages/")
+        ("melpa"     . "http://melpa.milkbox.net/packages/")
+        ;; ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+        ;; ("tromey"    . "http://tromey.com/elpa/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")))
 
 (eval-when-compile (unless package--initialized (package-initialize)))
 
@@ -35,10 +35,10 @@
 (defun install-packages-pack/install-pack (pack)
   "A utility function to help in installing an Emacs package PACK."
   (let* ((pack-archives (if (null package-archive-contents)
-			    (progn (package-refresh-contents)
-				   package-archive-contents)
-			  package-archive-contents))
-	 (pack-available-p (assoc pack pack-archives)))
+                            (progn (package-refresh-contents)
+                                   package-archive-contents)
+                          package-archive-contents))
+         (pack-available-p (assoc pack pack-archives)))
     (when (and pack-available-p (not (package-installed-p pack)))
       (package-install pack))))
 
